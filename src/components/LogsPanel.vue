@@ -15,7 +15,7 @@ async function loadLogs() {
     if (searchUser.value.trim()) {
       params.append('user', searchUser.value.trim());
     }
-    const url = `http://localhost:4000/api/audit/logs${params.toString() ? `?${params.toString()}` : ''}`;
+    const url = `https://proyectoqrbackend.onrender.com/api/api/audit/logs${params.toString() ? `?${params.toString()}` : ''}`;
     const res = await fetch(url, {
       headers: { Authorization: `Bearer ${props.token}` },
     });
