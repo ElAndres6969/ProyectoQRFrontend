@@ -11,7 +11,7 @@ async function loadCurrentUser() {
   if (!token.value) return;
 
   try {
-    const response = await fetch('http://localhost:4000/api/auth/me', {
+    const response = await fetch('https://proyectoqrbackend.onrender.com/api/api/auth/me', {
       headers: {
         Authorization: `Bearer ${token.value}`,
       },

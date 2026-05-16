@@ -17,7 +17,7 @@ async function submit() {
   }
 
   try {
-    const res = await fetch('http://localhost:4000/api/users', {
+    const res = await fetch('https://proyectoqrbackend.onrender.com/api/api/users', {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${props.token}`,

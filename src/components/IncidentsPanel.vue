@@ -9,7 +9,7 @@ const message = ref('');
 async function loadIncidents() {
   error.value = '';
   try {
-    const res = await fetch('http://localhost:4000/api/incidents', {
+    const res = await fetch('https://proyectoqrbackend.onrender.com/api/api/incidents', {
       headers: { Authorization: `Bearer ${props.token}` },
     });
     const data = await res.json();
@@ -24,7 +24,7 @@ async function createIncident() {
   error.value = '';
   message.value = '';
   try {
-    const res = await fetch('http://localhost:4000/api/incidents', {
+    const res = await fetch('https://proyectoqrbackend.onrender.com/api/api/incidents', {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${props.token}`,
@@ -46,7 +46,7 @@ async function createIncident() {
 async function resolveIncident(id) {
   error.value = '';
   try {
-    const res = await fetch(`http://localhost:4000/api/incidents/${id}/resolve`, {
+    const res = await fetch(`https://proyectoqrbackend.onrender.com/api/api/incidents/${id}/resolve`, {
       method: 'PUT',
       headers: { Authorization: `Bearer ${props.token}` },
     });

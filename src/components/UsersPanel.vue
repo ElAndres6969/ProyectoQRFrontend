@@ -22,7 +22,7 @@ async function loadUsers() {
     if (searchEmail.value.trim()) params.append('email', searchEmail.value.trim());
     if (companyQuery.value.trim()) params.append('company', companyQuery.value.trim());
 
-    const url = `http://localhost:4000/api/users${params.toString() ? `?${params.toString()}` : ''}`;
+    const url = `https://proyectoqrbackend.onrender.com/api/api/users${params.toString() ? `?${params.toString()}` : ''}`;
     const res = await fetch(url, {
       headers: { Authorization: `Bearer ${props.token}` },
     });
@@ -48,7 +48,7 @@ async function loadCompanyOptions() {
 
   companyLoading.value = true;
   try {
-    const res = await fetch(`http://localhost:4000/api/companies?search=${encodeURIComponent(query)}`, {
+    const res = await fetch(`https://proyectoqrbackend.onrender.com/api/api/companies?search=${encodeURIComponent(query)}`, {
       headers: { Authorization: `Bearer ${props.token}` },
     });
     const data = await res.json();
@@ -111,8 +111,8 @@ async function saveUser() {
   success.value = '';
   try {
     const url = selectedUser.value
-      ? `http://localhost:4000/api/users/${selectedUser.value.idusuario}`
-      : 'http://localhost:4000/api/users';
+      ? `https://proyectoqrbackend.onrender.com/api/api/users/${selectedUser.value.idusuario}`
+      : 'https://proyectoqrbackend.onrender.com/api/api/users';
 
     const method = selectedUser.value ? 'PUT' : 'POST';
     const res = await fetch(url, {
@@ -138,7 +138,7 @@ async function deleteUser(id) {
   error.value = '';
   success.value = '';
   try {
-    const res = await fetch(`http://localhost:4000/api/users/${id}`, {
+    const res = await fetch(`https://proyectoqrbackend.onrender.com/api/api/users/${id}`, {
       method: 'DELETE',
       headers: { Authorization: `Bearer ${props.token}` },
     });
