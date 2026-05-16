@@ -15,7 +15,7 @@ async function submit() {
   error.value = '';
   loading.value = true;
   try {
-    const response = await fetch('https://proyectoqrbackend.onrender.com/api/api/auth/login', {
+    const response = await fetch('https://proyectoqrbackend.onrender.com/api/auth/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: email.value, password: password.value }),
@@ -45,7 +45,7 @@ async function createAdmin() {
   }
 
   try {
-    const response = await fetch('https://proyectoqrbackend.onrender.com/api/api/users/first-admin/create', {
+    const response = await fetch('https://proyectoqrbackend.onrender.com/api/users/first-admin/create', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

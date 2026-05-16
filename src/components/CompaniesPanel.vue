@@ -15,7 +15,7 @@ async function loadCompanies() {
   loading.value = true;
   error.value = '';
   try {
-    const response = await fetch(`https://proyectoqrbackend.onrender.com/api/api/companies?search=${encodeURIComponent(search.value)}&page=${page.value}`, {
+    const response = await fetch(`https://proyectoqrbackend.onrender.com/api/companies?search=${encodeURIComponent(search.value)}&page=${page.value}`, {
       headers: { Authorization: `Bearer ${props.token}` },
     });
     const data = await response.json();
@@ -40,7 +40,7 @@ async function deleteCompany(idempresa) {
   loading.value = true;
 
   try {
-    const response = await fetch(`https://proyectoqrbackend.onrender.com/api/api/companies/${idempresa}`, {
+    const response = await fetch(`https://proyectoqrbackend.onrender.com/api/companies/${idempresa}`, {
       method: 'DELETE',
       headers: { Authorization: `Bearer ${props.token}` },
     });

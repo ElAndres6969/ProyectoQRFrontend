@@ -33,7 +33,7 @@ async function createQrImage(text) {
 async function loadToken() {
   error.value = '';
   try {
-    const res = await fetch('https://proyectoqrbackend.onrender.com/api/api/attendance/qrcode/me', {
+    const res = await fetch('https://proyectoqrbackend.onrender.com/api/attendance/qrcode/me', {
       headers: { Authorization: `Bearer ${props.token}` },
     });
     const data = await res.json();
@@ -70,7 +70,7 @@ async function generateToken() {
   error.value = '';
   message.value = '';
   try {
-    const res = await fetch('https://proyectoqrbackend.onrender.com/api/api/attendance/qrcode/generate', {
+    const res = await fetch('https://proyectoqrbackend.onrender.com/api/attendance/qrcode/generate', {
       method: 'POST',
       headers: { Authorization: `Bearer ${props.token}` },
     });
@@ -98,7 +98,7 @@ async function scan() {
     return;
   }
   try {
-    const res = await fetch('hhttps://proyectoqrbackend.onrender.com/api/api/attendance/scan', {
+    const res = await fetch('https://proyectoqrbackend.onrender.com/api/attendance/scan', {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${props.token}`,
@@ -146,7 +146,7 @@ async function createUser() {
   }
 
   try {
-    const res = await fetch('https://proyectoqrbackend.onrender.com/api/api/users', {
+    const res = await fetch('https://proyectoqrbackend.onrender.com/api/users', {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${props.token}`,

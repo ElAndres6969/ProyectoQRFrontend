@@ -52,7 +52,7 @@ async function submitPasswordChange() {
   }
 
   try {
-    const response = await fetch('https://proyectoqrbackend.onrender.com/api/api/users/me/password', {
+    const response = await fetch('https://proyectoqrbackend.onrender.com/api/users/me/password', {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

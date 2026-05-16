@@ -7,7 +7,7 @@ const error = ref('');
 async function loadReport() {
   error.value = '';
   try {
-    const res = await fetch('https://proyectoqrbackend.onrender.com/api/api/reports/hours', {
+    const res = await fetch('https://proyectoqrbackend.onrender.com/api/reports/hours', {
       headers: { Authorization: `Bearer ${props.token}` },
     });
     const data = await res.json();

@@ -9,7 +9,7 @@ const message = ref('');
 async function loadIncidents() {
   error.value = '';
   try {
-    const res = await fetch('https://proyectoqrbackend.onrender.com/api/api/incidents', {
+    const res = await fetch('https://proyectoqrbackend.onrender.com/api/incidents', {
       headers: { Authorization: `Bearer ${props.token}` },
     });
     const data = await res.json();
@@ -24,7 +24,7 @@ async function createIncident() {
   error.value = '';
   message.value = '';
   try {
-    const res = await fetch('https://proyectoqrbackend.onrender.com/api/api/incidents', {
+    const res = await fetch('https://proyectoqrbackend.onrender.com/api/incidents', {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${props.token}`,
