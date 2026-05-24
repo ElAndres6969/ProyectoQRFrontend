@@ -11,6 +11,7 @@ const scanActive = ref(false);
 const scannerError = ref('');
 const message = ref('');
 const error = ref('');
+const cameraConstraints = ref({ video: { facingMode: { ideal: 'environment' } } });
 const canScan = computed(() => [1, 2].includes(Number(props.user?.idrol)));
 const refreshSeconds = ref(60);
 let refreshTimer = null;
@@ -219,6 +220,7 @@ onUnmounted(() => {
             @decode="handleDecode"
             @init="onScannerInit"
             @error="onScannerError"
+            :constraints="cameraConstraints"
           />
           <p v-if="scannerError" class="error">{{ scannerError }}</p>
           <p class="hint">Permita el acceso a la cámara en el navegador cuando se lo solicite.</p>
