@@ -4,14 +4,14 @@ const props = defineProps({ token: String });
 const usuario = ref('');
 const email = ref('');
 const password = ref('');
-const idempresa = ref('');
+const idempresa = ref(1);
 const success = ref('');
 const error = ref('');
 
 async function submit() {
   error.value = '';
   success.value = '';
-  if (!usuario.value || !email.value || !password.value || !idempresa.value) {
+  if (!usuario.value || !email.value || !password.value) {
     error.value = 'Todos los campos son obligatorios';
     return;
   }
@@ -37,7 +37,6 @@ async function submit() {
     usuario.value = '';
     email.value = '';
     password.value = '';
-    idempresa.value = '';
   } catch (err) {
     error.value = err.message || 'Error al crear el usuario admin';
   }

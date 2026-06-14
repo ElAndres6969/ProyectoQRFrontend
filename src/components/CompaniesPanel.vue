@@ -95,7 +95,12 @@ onMounted(loadCompanies);
             <td>{{ company.idempresa }}</td>
             <td>{{ company.nombre_empresa }}</td>
             <td>
-              <button class="small secondary" type="button" @click.prevent="deleteCompany(company.idempresa)">
+              <button
+                v-if="company.idempresa !== 1"
+                class="small secondary"
+                type="button"
+                @click.prevent="deleteCompany(company.idempresa)"
+              >
                 Borrar empresa
               </button>
             </td>

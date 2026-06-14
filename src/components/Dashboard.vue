@@ -6,6 +6,7 @@ import AttendancePanel from './AttendancePanel.vue';
 import CreateCompanyWithAdminPanel from './CreateCompanyWithAdminPanel.vue';
 import CreateAdminUserPanel from './CreateAdminUserPanel.vue';
 import LogsPanel from './LogsPanel.vue';
+import FullTablesPanel from './FullTablesPanel.vue';
 const props = defineProps({ user: Object, token: String });
 const emit = defineEmits(['logout']);
 const section = ref('attendance');
@@ -21,6 +22,7 @@ const sections = computed(() => {
     return [
       { key: 'companies-list', label: 'EMPRESAS LISTA' },
       { key: 'company-create', label: 'CREACION DE EMPRESA' },
+      { key: 'full-tables', label: 'VER TABLAS' },
       { key: 'admin-create', label: 'CREACION DE USUARIO ADMIN' },
       { key: 'users', label: 'LISTA DE USUARIOS' },
     ];
@@ -141,6 +143,7 @@ async function submitPasswordChange() {
       <div class="dashboard-content">
         <CompaniesPanel v-if="section === 'companies-list'" :token="token" />
         <CreateCompanyWithAdminPanel v-if="section === 'company-create'" :token="token" />
+        <FullTablesPanel v-if="section === 'full-tables'" :token="token" />
         <CreateAdminUserPanel v-if="section === 'admin-create'" :token="token" />
         <UsersPanel v-if="section === 'users'" :token="token" :user="props.user" />
         <LogsPanel v-if="section === 'logs'" :token="token" />

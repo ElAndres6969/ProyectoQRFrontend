@@ -1,10 +1,11 @@
 <script setup>
-import { ref, watch, watchEffect } from 'vue';
+import { ref, watch, watchEffect, nextTick } from 'vue';
 const props = defineProps({ token: String, user: Object });
 const users = ref([]);
 const error = ref('');
 const success = ref('');
 const selectedUser = ref(null);
+const formContainer = ref(null);
 const searchName = ref('');
 const searchEmail = ref('');
 const companyQuery = ref('');
@@ -106,6 +107,20 @@ function startEdit(userItem) {
   success.value = '';
 }
 
+async function openEditAndFocus(userItem) {
+  startEdit(userItem);
+  await nextTick();
+  try {
+    if (formContainer.value && formContainer.value.scrollIntoView) {
+      formContainer.value.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    const firstInput = formContainer.value && formContainer.value.querySelector('input');
+    if (firstInput) firstInput.focus();
+  } catch (e) {
+    // ignore
+  }
+}
+
 async function saveUser() {
   error.value = '';
   success.value = '';
@@ -164,9 +179,9 @@ watchEffect(() => {
 <template>
   <section class="panel">
     <h2>Gestión de usuarios</h2>
-    <p class="panel-description">Solo los administradores de empresa pueden crear usuarios.</p>
+    <p class="panel-description">Administradores y supervisores pueden crear y editar usuarios.</p>
 
-    <div v-if="props.user?.idrol === 2" class="panel-card">
+    <div v-if="props.user?.idrol === 1 || props.user?.idrol === 2" class="panel-card" ref="formContainer">
       <h3>{{ selectedUser ? 'Editar usuario' : 'Crear usuario' }}</h3>
       <label>
         Nombre
@@ -178,7 +193,7 @@ watchEffect(() => {
       </label>
       <label>
         Contraseña
-        <input type="password" v-model="form.password" placeholder="Dejar vacío para no cambiar" />
+        <input type="password" v-model="form.password" />
       </label>
       <template v-if="props.user?.idrol === 1">
         <label>
@@ -222,7 +237,7 @@ watchEffect(() => {
             <td>{{ userItem.ultima_entrada ? new Date(userItem.ultima_entrada).toLocaleString('es-ES') : '-' }}</td>
             <td>{{ userItem.ultima_salida ? new Date(userItem.ultima_salida).toLocaleString('es-ES') : '-' }}</td>
             <td>
-              <button class="small" @click.prevent="startEdit(userItem)">Editar</button>
+              <button class="small" type="button" @click.prevent="openEditAndFocus(userItem)">Editar</button>
               <button class="small secondary" @click.prevent="deleteUser(userItem.idusuario)">Borrar</button>
             </td>
           </tr>
