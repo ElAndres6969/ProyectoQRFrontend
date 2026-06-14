@@ -6,7 +6,6 @@ import AttendancePanel from './AttendancePanel.vue';
 import CreateCompanyWithAdminPanel from './CreateCompanyWithAdminPanel.vue';
 import CreateAdminUserPanel from './CreateAdminUserPanel.vue';
 import LogsPanel from './LogsPanel.vue';
-import FullTablesPanel from './FullTablesPanel.vue';
 const props = defineProps({ user: Object, token: String });
 const emit = defineEmits(['logout']);
 const section = ref('attendance');
@@ -22,7 +21,6 @@ const sections = computed(() => {
     return [
       { key: 'companies-list', label: 'EMPRESAS LISTA' },
       { key: 'company-create', label: 'CREACION DE EMPRESA' },
-      { key: 'full-tables', label: 'VER TABLAS' },
       { key: 'admin-create', label: 'CREACION DE USUARIO ADMIN' },
       { key: 'users', label: 'LISTA DE USUARIOS' },
     ];
